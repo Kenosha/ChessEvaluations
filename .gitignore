@@ -3,4 +3,5 @@ data/*
 engine/*
 openings/*
 outputs_edited/*
-results/*
+outputs_raw/*
+outputs_aggregated/*

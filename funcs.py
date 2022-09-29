@@ -5,20 +5,34 @@ Created on Tue Sep 27 23:27:23 2022
 @author: gianl
 """
 
+    
+### TODO:
+    # increase depth 
+        # - check how it behaves with ENGINE LIMIT up.
+        # - see if we maybe want to control it directly
+    # improve leniency criterion
+    ### -> idea for these two: find a range of moves from absolute best engine at best depth
+    # improve book moves -> book moves are not convex; instead, they sometimes have holes!
+    # analyse at scale, comparing with other players.
+    # use older machines (stockfish 7 up to 14, for instance.)    
+
+#### VARIOUS IMPORTS #####
 import time
 import pandas as pd
-
-import os
-mainPath = r'C:\Users\gianl\Desktop\Chess'
-dataPath = os.path.join(mainPath, 'data')
-enginePath = os.path.join(mainPath, 'engine', 'executables')
-openingPath = os.path.join(mainPath, 'openings')
 
 import chess
 import chess.pgn
 import chess.engine
 import chess.polyglot
     
+######### FILE STRUCTURE #######
+import os
+mainPath = r'C:\Users\gianl\Documents\GitHub\ChessEvaluations'
+dataPath = os.path.join(mainPath, 'data')
+enginePath = os.path.join(mainPath, 'engine', 'executables')
+openingPath = os.path.join(mainPath, 'openings')
+savePath_raw = os.path.join(mainPath, 'outputs_raw')
+savePath_agg = os.path.join(mainPath, 'outputs_aggregated')
 
 ####### FIND GAMES IN PGN OBJECT #########
 def get_offsets(pgnStr, filterDict):
@@ -113,7 +127,7 @@ def get_white_black_accuracy(game, book, engine,
         The time limit on each move in seconds. The default is 1.
     engine_lines : int, optional
         The number of best engine lines, sorted, to output. The default is 5.
-    leniency : TYPE, optional
+    leniency : float, optional
         The leniency in terms of expected game outcome, where W = 1, D = 0.5, L = 0. 
         If a move is less than {leniency} worse than the best move, it is accepted.
         
@@ -311,3 +325,72 @@ def get_move_evals(game, book, engine,
     print(f'... Done with {white_player} against {black_player} at {event}! Time elapsed: {elapsed_mins}')
     
     return outFrame
+
+
+def get_accuracy_frame(outFrame, player_of_interest, 
+                       leniency = 0, verbose = False):
+    """
+    Using the outFrame supplied by get_move_evals, this function calculates
+    the accuracy in each game in each round for a player_of_interest
+
+    Parameters
+    ----------
+    outFrame : pd.DataFrame
+        The collection of raw data supplied by get_move_evals, 
+        or many concatenated instances of it.
+    player_of_interest : str
+        The player who we are interested in the aggregated scores for.
+    leniency : float, optional
+        The leniency in terms of expected game outcome, where W = 1, D = 0.5, L = 0. 
+        If a move is less than {leniency} worse than the best move, it is accepted.
+    verbose : Bool, optional
+        Whether to print or not. The default is False.
+
+    Returns
+    -------
+    pd.DataFrame
+        A table with tournaments in the rows and game rounds in the columns,
+        and the engine correlation percentage in the cells.
+    """
+    
+    
+    def get_pov_exp(povScore):
+        if povScore == '_':
+            return '_'
+        else:
+            w, d, l = povScore.wdl()
+            return (w + d * 0.5) / (w + d + l)
+        
+    def get_accuracy(player_game_frame, leniency = 0):
+        non_book_frame = player_game_frame[~(player_game_frame['rank'] == 'B')]
+        
+        non_book_frame['exp'] = non_book_frame['exp'].replace('_', 0).astype(float)
+        non_book_frame['exp_loss'] = non_book_frame['exp'] - non_book_frame['best_exp']
+    
+        good_move = non_book_frame['exp_loss'] >= - leniency
+    
+        return good_move.mean()
+    
+    # book_move = outFrame['rank'] == 'B'
+    # bad_move = outFrame['rank'] == 'X'
+    # eval_move = ~ (book_move | bad_move)
+    
+    ### Add the Expected Outcome Values for Chosen Move and Best Move
+    outFrame['exp'] = outFrame['eval'].apply(get_pov_exp)
+    outFrame['best_exp'] = outFrame['best_eval'].apply(get_pov_exp)
+    
+    ### Separate the weird dot notation in the round numbers.
+    outFrame[['round_left', 'round_right']] = outFrame['round'].str.split('.', expand = True)
+    outFrame['round_left'] = outFrame['round_left'].astype(int)
+    
+    ### Calculate the accuracy
+    accFrame = outFrame.groupby(['event', 'round_left', 'player']).apply(get_accuracy, 
+                                                                         leniency = leniency)
+    accFrame = accFrame.unstack('player')[player_of_interest]
+    if verbose: print('Average Performance in Tournaments of Interest:')
+    if verbose: print(accFrame.groupby('event').mean())
+
+    ### Re-Shape to Tournament x Rounds
+    accFrame = accFrame.unstack('round_left')
+    
+    return accFrame
