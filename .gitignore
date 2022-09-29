@@ -1,5 +1,3 @@
-*.pgn
-data/*
 engine/*
 openings/*
 outputs_edited/*
