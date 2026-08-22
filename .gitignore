@@ -3,3 +3,6 @@ openings/*
 outputs_edited/*
 outputs_raw/*
 outputs_aggregated/*
+.venv/
+__pycache__/
+recovered_2022/external_inputs/

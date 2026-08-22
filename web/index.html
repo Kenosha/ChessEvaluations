@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A compact interactive exhibit about engine correlation and the 2022 Carlsen–Niemann controversy."
+    />
+    <title>Chess Evaluations · 2022</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="project-shell">
+      <section
+        class="work-exhibit"
+        aria-label="Chess Evaluations interactive exhibit"
+      >
+        <header class="instrument-header">
+          <div class="instrument-id">
+            <span class="status-light" aria-hidden="true"></span>
+            <span>CHESS EVALUATIONS</span>
+            <span class="instrument-code">CE / 2022</span>
+          </div>
+          <div class="instrument-readout" aria-live="polite">
+            <span>ACTIVE MODULE</span>
+            <strong id="active-module">INCIDENT</strong>
+          </div>
+        </header>
+
+        <div class="page-deck" data-active-page="0">
+          <article
+            class="exhibit-page incident-page is-active"
+            id="incident"
+            data-title="INCIDENT"
+            data-caption-title="01 / THE INCIDENT"
+            data-caption="The case cut both ways: rare preparation and disputed postgame analysis fed suspicion; Carlsen’s decisive 28.g4? and the later investigations cut against treating the game as proof."
+            aria-hidden="false"
+          >
+            <div class="incident-stage">
+              <div class="board-column">
+                <div class="game-strip">
+                  <div>
+                    <span>WHITE</span>
+                    <strong id="white-player">Magnus Carlsen</strong>
+                    <small id="white-rating">2861</small>
+                  </div>
+                  <b id="game-result">0–1</b>
+                  <div class="align-right">
+                    <span>BLACK</span>
+                    <strong id="black-player">Hans Niemann</strong>
+                    <small id="black-rating">2688</small>
+                  </div>
+                </div>
+                <div class="board-bezel">
+                  <div
+                    class="chessboard"
+                    id="chessboard"
+                    aria-label="Animated chess position"
+                  ></div>
+                  <span class="board-index" id="evidence-label"
+                    >Sinquefield Cup · Round 3</span
+                  >
+                </div>
+              </div>
+
+              <div class="incident-console">
+                <div
+                  class="incident-switch"
+                  role="group"
+                  aria-label="Choose incident"
+                >
+                  <button
+                    class="incident-tab is-active"
+                    data-game="sinquefield"
+                    aria-pressed="true"
+                  >
+                    <span>01</span> THE UPSET
+                  </button>
+                  <button
+                    class="incident-tab"
+                    data-game="resignation"
+                    aria-pressed="false"
+                  >
+                    <span>02</span> THE RESIGNATION
+                  </button>
+                </div>
+
+                <div
+                  class="board-callout is-hidden"
+                  id="board-callout"
+                  aria-live="polite"
+                >
+                  <span class="callout-kicker">13…Be6</span>
+                  <p>
+                    Black develops with tempo: the bishop attacks White’s rook
+                    on d8.
+                  </p>
+                  <small class="callout-context"
+                    >PLAYED MOVE · CONTEMPORARY GAME REPORT</small
+                  >
+                </div>
+
+                <div class="game-control-row">
+                  <button
+                    class="play-button"
+                    id="play-game"
+                    aria-label="Play game"
+                  >
+                    <span class="play-icon" aria-hidden="true"></span>
+                    <span class="pause-icon" aria-hidden="true"></span>
+                  </button>
+                  <div class="move-readout">
+                    <span id="move-label">Start position</span>
+                    <small id="move-progress">0 / 113</small>
+                  </div>
+                </div>
+                <input
+                  id="game-scrubber"
+                  class="range-control"
+                  type="range"
+                  min="0"
+                  max="113"
+                  value="0"
+                  aria-label="Game move"
+                />
+                <p class="source-stamp">
+                  <span>SOURCE</span> Actual game scores · sourced editorial
+                  annotations
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="exhibit-page measure-page"
+            id="measure"
+            data-title="MEASURE"
+            data-caption-title="02 / ENGINE CORRELATION"
+            data-caption="Switch the source. Forty-three matched games move between the three tables published in 2022: the viral pooled result, a fixed Stockfish 15 run, and the historical Stockfish 7 rerun."
+            aria-hidden="true"
+          >
+            <div class="analysis-terminal measure-terminal">
+              <div class="screen-bezel">
+                <div class="screen-glass method-console">
+                  <aside class="method-annotation" id="method-annotation" aria-live="polite">
+                    <span id="method-eyebrow">LET’S CHECK · POOLED ENGINES</span>
+                    <strong id="method-headline">The viral outliers sit at the ceiling.</strong>
+                    <p id="method-copy">GambitMan and Yosha presented the 97–100% games as suspicious. The red marks locate that original claim.</p>
+                  </aside>
+
+                  <div class="chart-shell">
+                    <div class="chart-label">
+                      <span>ENGINE CORRELATION / GAME (%)</span>
+                      <div id="chart-legend" aria-label="Correlation color scale"></div>
+                    </div>
+                    <svg
+                      id="correlation-chart"
+                      viewBox="0 0 1120 520"
+                      role="img"
+                      aria-labelledby="chart-title chart-desc"
+                    >
+                      <title id="chart-title">
+                        Game-by-game engine correlation
+                      </title>
+                      <desc id="chart-desc">
+                        A grouped scatter plot comparing three analysis sources
+                        across six tournaments.
+                      </desc>
+                    </svg>
+                    <div
+                      class="chart-tooltip"
+                      id="chart-tooltip"
+                      role="status"
+                    ></div>
+                  </div>
+
+                  <div class="heatmap-shell">
+                    <div class="heatmap-key">
+                      <span>ROUND TABLE</span><small>same scale as plot</small>
+                    </div>
+                    <div
+                      class="heatmap"
+                      id="heatmap"
+                      aria-label="Tournament correlation heatmap"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="screen-control-deck method-control">
+                <span class="deck-label">ANALYSIS SOURCE</span>
+                <div
+                  class="method-track"
+                  id="method-track"
+                  role="radiogroup"
+                  aria-label="Analysis source"
+                >
+                  <div class="track-line"><span id="track-fill"></span></div>
+                  <button
+                    role="radio"
+                    aria-checked="true"
+                    class="method-stop is-active"
+                    data-method="letscheck"
+                  >
+                    <i></i><strong>LET’S CHECK</strong><small>pooled</small>
+                  </button>
+                  <button
+                    role="radio"
+                    aria-checked="false"
+                    class="method-stop"
+                    data-method="sf15"
+                  >
+                    <i></i><strong>STOCKFISH 15</strong
+                    ><small>controlled</small>
+                  </button>
+                  <button
+                    role="radio"
+                    aria-checked="false"
+                    class="method-stop"
+                    data-method="sf7"
+                  >
+                    <i></i><strong>STOCKFISH 7</strong><small>historical</small>
+                  </button>
+                </div>
+                <span class="hardware-mark">CE / CORRELATION</span>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="exhibit-page reaction-page"
+            id="reaction"
+            data-title="REACTION"
+            data-caption-title="03 / PUBLIC REVIEW"
+            data-caption="The result met its reviewers in public: support, methodological criticism and requests for a more transparent comparison."
+            aria-hidden="true"
+          >
+            <div class="clipping-field" aria-label="Selected Reddit reactions">
+              <div class="thread-signal" aria-hidden="true">
+                <span>ARCHIVED THREAD</span>
+                <strong id="thread-comments">89</strong>
+                <small id="thread-metrics"
+                  >comments · 52 score · 82% upvoted</small
+                >
+              </div>
+            </div>
+            <a
+              class="thread-link"
+              href="https://www.reddit.com/r/chess/comments/xr51fn/validating_chessbases_lets_check_figures_with_a/"
+              target="_blank"
+              rel="noreferrer"
+              >OPEN ORIGINAL THREAD ↗</a
+            >
+          </article>
+
+          <article
+            class="exhibit-page depth-page"
+            id="depth"
+            data-title="DEPTH"
+            data-caption-title="04 / SEARCH DEPTH"
+            data-caption="Move the depth slider through the archived Stockfish 7 experiment. The four moves Niemann played jump between ranks as the same engine searches one ply deeper."
+            aria-hidden="true"
+          >
+            <div class="analysis-terminal depth-terminal">
+              <div class="screen-bezel">
+                <div class="screen-glass depth-console">
+                  <div class="depth-toolbar">
+                    <span class="engine-readout">STOCKFISH 7</span>
+                    <span class="depth-game">
+                      <small>GAME</small>
+                      <strong>MATTHIEU CORNETTE — HANS NIEMANN · 2020</strong>
+                    </span>
+                  </div>
+
+                  <div class="rank-table">
+                    <div class="rank-header">
+                      <span>PLAYED MOVE</span><span>BEST</span><span>2ND</span
+                      ><span>3RD</span><span>4TH</span><span>5TH</span
+                      ><span>6TH</span>
+                    </div>
+                    <div class="rank-row" data-position="0">
+                      <span class="position-label">MOVE 13</span>
+                      <div class="rank-slots"></div>
+                    </div>
+                    <div class="rank-row" data-position="1">
+                      <span class="position-label">MOVE 15</span>
+                      <div class="rank-slots"></div>
+                    </div>
+                    <div class="rank-row" data-position="2">
+                      <span class="position-label">MOVE 18</span>
+                      <div class="rank-slots"></div>
+                    </div>
+                    <div class="rank-row" data-position="3">
+                      <span class="position-label">MOVE 22</span>
+                      <div class="rank-slots"></div>
+                    </div>
+                  </div>
+                  <div
+                    class="rank-observation"
+                    id="rank-observation"
+                    aria-live="polite"
+                  >
+                    <span>Depth 17 → 18</span>
+                    <p>
+                      <strong>15.e5</strong> is first. One more ply sends it to
+                      third; 13.h3 falls from second to fifth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="screen-control-deck depth-control-deck">
+                <label for="depth-slider">
+                  <span>SEARCH DEPTH</span>
+                  <strong id="depth-value">17</strong>
+                </label>
+                <input
+                  id="depth-slider"
+                  class="range-control"
+                  type="range"
+                  min="10"
+                  max="25"
+                  value="17"
+                  aria-label="Stockfish 7 search depth"
+                />
+                <span class="hardware-mark">10 / 25 PLY</span>
+              </div>
+            </div>
+          </article>
+
+          <a
+            class="depth-seed"
+            id="depth-seed"
+            href="https://www.reddit.com/r/chess/comments/xr51fn/comment/iqhogfm/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open the archived Reddit comment by Sure Tradition that prompted the depth experiment"
+          >
+            <img
+              src="assets/reddit-comments/iqhogfm.png"
+              alt="Sure Tradition asks for four moves in Cornette versus Niemann to be checked with Stockfish 7 at different depths."
+            />
+          </a>
+        </div>
+
+        <footer class="instrument-footer">
+          <button
+            class="page-arrow"
+            id="page-prev"
+            aria-label="Previous exhibit page"
+          >
+            ‹
+          </button>
+          <div class="page-description" aria-live="polite">
+            <strong id="page-description-title">01 / THE INCIDENT</strong>
+            <span id="page-description-copy"
+              >The case cut both ways: rare preparation and disputed postgame
+              analysis fed suspicion; Carlsen’s decisive 28.g4? and the later
+              investigations cut against treating the game as proof.</span
+            >
+          </div>
+          <div class="page-nav-meta">
+            <div
+              class="page-register"
+              role="tablist"
+              aria-label="Exhibit pages"
+            >
+              <button
+                class="page-dot is-active"
+                data-page="0"
+                role="tab"
+                aria-label="Page 1: Incident"
+                aria-selected="true"
+              ></button>
+              <button
+                class="page-dot"
+                data-page="1"
+                role="tab"
+                aria-label="Page 2: Measure"
+                aria-selected="false"
+              ></button>
+              <button
+                class="page-dot"
+                data-page="2"
+                role="tab"
+                aria-label="Page 3: Reaction"
+                aria-selected="false"
+              ></button>
+              <button
+                class="page-dot"
+                data-page="3"
+                role="tab"
+                aria-label="Page 4: Depth"
+                aria-selected="false"
+              ></button>
+            </div>
+            <div class="page-count">
+              <strong id="page-current">01</strong><span>/ 04</span>
+            </div>
+          </div>
+          <button
+            class="page-arrow"
+            id="page-next"
+            aria-label="Next exhibit page"
+          >
+            ›
+          </button>
+        </footer>
+      </section>
+
+      <article class="project-copy">
+        <p class="copy-kicker">
+          ChessEvaluations · independent analysis · 2022
+        </p>
+        <h1>When “100% correlation” wasn’t 100% proof.</h1>
+        <div class="copy-grid">
+          <p class="copy-lede">
+            In September 2022, Magnus Carlsen’s loss to Hans Niemann triggered
+            the most explosive cheating controversy in modern chess. One viral
+            claim appeared especially concrete: several Niemann games supposedly
+            matched an engine on every move.
+          </p>
+          <div class="copy-body">
+            <p>
+              I rebuilt the comparison with a controlled analysis pipeline. The
+              central problem was the measuring instrument. ChessBase’s Let’s
+              Check aggregates analysis contributed by different users, engines,
+              versions, hardware and depths. A “match” against that expanding
+              pool is not the same quantity as a match against one fixed engine
+              under one fixed rule.
+            </p>
+            <p>
+              I was not trying to pronounce Niemann innocent or guilty. I was
+              asking a narrower question: did the dramatic pattern survive when
+              the measuring instrument stopped changing? In the matched games,
+              all three 100% results disappear under Stockfish 15 and Stockfish
+              7. That does not settle the controversy. It does show why the
+              original percentage could not carry the weight placed on it.
+            </p>
+            <p>
+              The four scenes above preserve the whole arc: the games that lit
+              the fuse, the published values moving under a cleaner comparison,
+              the public peer review on Reddit, and the small depth experiment
+              that made the instability visible move by move.
+            </p>
+            <p class="data-note">
+              <strong>Archive note.</strong> Every number shown above was
+              recovered from the tables published in the 2022 Reddit post or its
+              comments. The chart follows the 43 games shared by all three
+              methods; the depth view reproduces the archived Stockfish 7 ranks
+              at depths 10–25.
+            </p>
+            <div class="copy-links">
+              <a
+                href="https://www.reddit.com/r/chess/comments/xr51fn/validating_chessbases_lets_check_figures_with_a/"
+                target="_blank"
+                rel="noreferrer"
+                >Read the original analysis on Reddit ↗</a
+              >
+              <a
+                href="https://www.youtube.com/watch?v=jfPzUgzrOcQ"
+                target="_blank"
+                rel="noreferrer"
+                >Watch the viral video context ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+    <script src="data/evidence.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

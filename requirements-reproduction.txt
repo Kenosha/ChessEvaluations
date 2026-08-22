@@ -1,0 +1,4 @@
+# Latest chess release available when the analysis was published (2022-09-29).
+# The exact historical environment remains unknown.
+chess==1.9.3
+py7zr==1.0.0

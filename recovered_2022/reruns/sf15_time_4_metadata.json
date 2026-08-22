@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-08-20T14:57:06.172752+00:00",
+  "engine_label": "sf15",
+  "engine_path": "recovered_2022/external_inputs/Stockfish-sf_15/src/stockfish",
+  "engine_sha256": "a6ed16e400e9ca8ad1470055277759daf5c432f539cd2254bdc7b475572e7f2d",
+  "book_path": "recovered_2022/external_inputs/codekiddy/codekiddy.bin",
+  "book_sha256": "46e8ad19a960bbc491a64d5b54ff3648b9ac2c10666cf0fc29dcfc08e249e79c",
+  "pgn_path": "data/Niemann.pgn",
+  "pgn_sha256": "8d31a836b42c784cb5754dd42a9b8d993d3421186039c9e67e04431bd66f44d3",
+  "event_filters": [
+    "Philadelphia",
+    "Annual World Open",
+    "Junior 2021",
+    "US Open",
+    "Tras-os-Montes",
+    "National Open"
+  ],
+  "selected_game_records": 47,
+  "analysed_plies": 4183,
+  "limit_mode": "time",
+  "limit_value": 4.0,
+  "multipv": 10,
+  "workers": 12,
+  "average_best_line_depth": 19.520790927595232,
+  "elapsed_seconds": 1455.7913104380002,
+  "python": "3.12.3",
+  "python_chess": "1.11.2",
+  "platform": "Linux-7.0.0-29-generic-x86_64-with-glibc2.39",
+  "processor_count": 24
+}

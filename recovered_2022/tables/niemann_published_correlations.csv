@@ -1,0 +1,140 @@
+dataset,tournament,round,percent
+lets_check,National Open 2021,1,51
+lets_check,National Open 2021,2,89
+lets_check,National Open 2021,3,80
+lets_check,National Open 2021,4,88
+lets_check,National Open 2021,5,83
+lets_check,National Open 2021,6,47
+lets_check,National Open 2021,7,26
+lets_check,National Open 2021,8,77
+lets_check,National Open 2021,9,30
+lets_check,14th Philadelphia Int,1,100
+lets_check,14th Philadelphia Int,2,54
+lets_check,14th Philadelphia Int,3,78
+lets_check,14th Philadelphia Int,4,62
+lets_check,14th Philadelphia Int,5,51
+lets_check,14th Philadelphia Int,6,73
+lets_check,14th Philadelphia Int,7,72
+lets_check,14th Philadelphia Int,9,69
+lets_check,49th Annual World Open,2,74
+lets_check,49th Annual World Open,3,63
+lets_check,49th Annual World Open,4,92
+lets_check,49th Annual World Open,5,67
+lets_check,49th Annual World Open,8,60
+lets_check,49th Annual World Open,9,67
+lets_check,49th Annual World Open,10,69
+lets_check,ch-USA Junior 2021,1,68
+lets_check,ch-USA Junior 2021,2,56
+lets_check,ch-USA Junior 2021,3,98
+lets_check,ch-USA Junior 2021,4,81
+lets_check,ch-USA Junior 2021,5,80
+lets_check,ch-USA Junior 2021,6,100
+lets_check,ch-USA Junior 2021,7,85
+lets_check,ch-USA Junior 2021,8,67
+lets_check,ch-USA Junior 2021,9,72
+lets_check,121st US Open 2021,1,71
+lets_check,121st US Open 2021,2,80
+lets_check,121st US Open 2021,3,72
+lets_check,121st US Open 2021,4,97
+lets_check,121st US Open 2021,5,86
+lets_check,121st US Open 2021,7,64
+lets_check,121st US Open 2021,9,84
+lets_check,2nd Tras-os-Montes Open,1,78
+lets_check,2nd Tras-os-Montes Open,2,43
+lets_check,2nd Tras-os-Montes Open,4,63
+lets_check,2nd Tras-os-Montes Open,5,71
+lets_check,2nd Tras-os-Montes Open,7,100
+lets_check,2nd Tras-os-Montes Open,8,67
+lets_check,2nd Tras-os-Montes Open,9,58
+stockfish_15,National Open 2021,1,74
+stockfish_15,National Open 2021,2,83
+stockfish_15,National Open 2021,3,75
+stockfish_15,National Open 2021,4,72
+stockfish_15,National Open 2021,5,78
+stockfish_15,National Open 2021,6,50
+stockfish_15,National Open 2021,7,59
+stockfish_15,National Open 2021,8,59
+stockfish_15,National Open 2021,9,38
+stockfish_15,14th Philadelphia Int,1,80
+stockfish_15,14th Philadelphia Int,2,66
+stockfish_15,14th Philadelphia Int,3,54
+stockfish_15,14th Philadelphia Int,4,75
+stockfish_15,14th Philadelphia Int,5,63
+stockfish_15,14th Philadelphia Int,6,64
+stockfish_15,14th Philadelphia Int,7,59
+stockfish_15,14th Philadelphia Int,9,82
+stockfish_15,49th Annual World Open,1,79
+stockfish_15,49th Annual World Open,2,79
+stockfish_15,49th Annual World Open,3,70
+stockfish_15,49th Annual World Open,4,88
+stockfish_15,49th Annual World Open,5,64
+stockfish_15,49th Annual World Open,7,82
+stockfish_15,49th Annual World Open,8,57
+stockfish_15,49th Annual World Open,9,56
+stockfish_15,49th Annual World Open,10,59
+stockfish_15,ch-USA Junior 2021,1,77
+stockfish_15,ch-USA Junior 2021,2,82
+stockfish_15,ch-USA Junior 2021,3,83
+stockfish_15,ch-USA Junior 2021,4,68
+stockfish_15,ch-USA Junior 2021,5,78
+stockfish_15,ch-USA Junior 2021,6,87
+stockfish_15,ch-USA Junior 2021,7,84
+stockfish_15,ch-USA Junior 2021,8,70
+stockfish_15,ch-USA Junior 2021,9,72
+stockfish_15,121st US Open 2021,4,80
+stockfish_15,121st US Open 2021,5,81
+stockfish_15,121st US Open 2021,7,57
+stockfish_15,121st US Open 2021,8,77
+stockfish_15,121st US Open 2021,9,69
+stockfish_15,2nd Tras-os-Montes Open,2,56
+stockfish_15,2nd Tras-os-Montes Open,4,86
+stockfish_15,2nd Tras-os-Montes Open,5,70
+stockfish_15,2nd Tras-os-Montes Open,7,91
+stockfish_15,2nd Tras-os-Montes Open,8,75
+stockfish_15,2nd Tras-os-Montes Open,9,78
+stockfish_7,National Open 2021,1,78
+stockfish_7,National Open 2021,2,70
+stockfish_7,National Open 2021,3,70
+stockfish_7,National Open 2021,4,65
+stockfish_7,National Open 2021,5,64
+stockfish_7,National Open 2021,6,45
+stockfish_7,National Open 2021,7,41
+stockfish_7,National Open 2021,8,55
+stockfish_7,National Open 2021,9,33
+stockfish_7,14th Philadelphia Int,1,76
+stockfish_7,14th Philadelphia Int,2,56
+stockfish_7,14th Philadelphia Int,3,58
+stockfish_7,14th Philadelphia Int,4,75
+stockfish_7,14th Philadelphia Int,5,78
+stockfish_7,14th Philadelphia Int,6,64
+stockfish_7,14th Philadelphia Int,7,77
+stockfish_7,14th Philadelphia Int,9,82
+stockfish_7,49th Annual World Open,1,71
+stockfish_7,49th Annual World Open,2,55
+stockfish_7,49th Annual World Open,3,55
+stockfish_7,49th Annual World Open,4,63
+stockfish_7,49th Annual World Open,5,66
+stockfish_7,49th Annual World Open,7,82
+stockfish_7,49th Annual World Open,8,68
+stockfish_7,49th Annual World Open,9,56
+stockfish_7,49th Annual World Open,10,39
+stockfish_7,ch-USA Junior 2021,1,77
+stockfish_7,ch-USA Junior 2021,2,72
+stockfish_7,ch-USA Junior 2021,3,83
+stockfish_7,ch-USA Junior 2021,4,73
+stockfish_7,ch-USA Junior 2021,5,74
+stockfish_7,ch-USA Junior 2021,6,83
+stockfish_7,ch-USA Junior 2021,7,75
+stockfish_7,ch-USA Junior 2021,8,55
+stockfish_7,ch-USA Junior 2021,9,64
+stockfish_7,121st US Open 2021,4,85
+stockfish_7,121st US Open 2021,5,68
+stockfish_7,121st US Open 2021,7,52
+stockfish_7,121st US Open 2021,8,86
+stockfish_7,121st US Open 2021,9,72
+stockfish_7,2nd Tras-os-Montes Open,2,61
+stockfish_7,2nd Tras-os-Montes Open,4,80
+stockfish_7,2nd Tras-os-Montes Open,5,74
+stockfish_7,2nd Tras-os-Montes Open,7,65
+stockfish_7,2nd Tras-os-Montes Open,8,74
+stockfish_7,2nd Tras-os-Montes Open,9,69

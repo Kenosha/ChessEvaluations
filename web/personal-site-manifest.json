@@ -1,0 +1,101 @@
+{
+  "slug": "chess-evaluations",
+  "group": "leisure",
+  "year": 2022,
+  "title": "Chess Evaluations",
+  "runtimeDependencies": [],
+  "largeMedia": [],
+  "posters": [
+    {
+      "id": "chess-evaluations-incident",
+      "source": "web/posters/incident.png",
+      "owner": "Gianluca Beppe",
+      "rights": "Author's own generated exhibit frame",
+      "redactionStatus": "none",
+      "alternativeText": "An annotated chessboard showing Carlsen against Niemann at the 2022 Sinquefield Cup",
+      "caption": "The incident",
+      "publicLocation": "/media/chess-evaluations/incident.png"
+    },
+    {
+      "id": "chess-evaluations-measure",
+      "source": "web/posters/measure.png",
+      "owner": "Gianluca Beppe",
+      "rights": "Author's own generated exhibit frame",
+      "redactionStatus": "none",
+      "alternativeText": "A scatterplot and tournament table comparing published engine-correlation values",
+      "caption": "Engine correlation",
+      "publicLocation": "/media/chess-evaluations/measure.png"
+    },
+    {
+      "id": "chess-evaluations-reaction",
+      "source": "web/posters/reaction.png",
+      "owner": "Gianluca Beppe",
+      "rights": "Author's exhibit frame with attributed archived comment captures from a public discussion",
+      "redactionStatus": "none",
+      "alternativeText": "Archived Reddit comments scattered across the screen as cropped captures",
+      "caption": "Public review",
+      "publicLocation": "/media/chess-evaluations/reaction.png"
+    },
+    {
+      "id": "chess-evaluations-depth",
+      "source": "web/posters/depth.png",
+      "owner": "Gianluca Beppe",
+      "rights": "Author's own generated exhibit frame",
+      "redactionStatus": "none",
+      "alternativeText": "Four chess moves positioned in a six-column Stockfish rank table",
+      "caption": "Search depth",
+      "publicLocation": "/media/chess-evaluations/depth.png"
+    }
+  ],
+  "pages": [
+    {
+      "id": "incident",
+      "title": "The incident",
+      "interaction": "Continue an automatic replay through five annotated checkpoints, including one clearly marked unplayed interview line, or scrub two complete game scores"
+    },
+    {
+      "id": "measure",
+      "title": "Engine correlation",
+      "interaction": "Switch among three published methods for 43 matched games"
+    },
+    {
+      "id": "reaction",
+      "title": "Public review",
+      "interaction": "Explore eight archived Reddit comment captures and follow the depth-test prompt into the next page"
+    },
+    {
+      "id": "depth",
+      "title": "Search depth",
+      "interaction": "Change Stockfish 7 depth from 10 through 25"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "published-correlations",
+      "source": "recovered_2022/tables/niemann_published_triplets.csv",
+      "publicSource": "https://www.reddit.com/r/chess/comments/xr51fn/validating_chessbases_lets_check_figures_with_a/",
+      "owner": "Gianluca Beppe",
+      "rights": "Author's own analysis; public Reddit publication",
+      "redactionStatus": "none",
+      "rows": 43
+    },
+    {
+      "id": "depth-ranks",
+      "source": "recovered_2022/tables/cornette_niemann_sf7_depth_ranks.csv",
+      "publicSource": "https://www.reddit.com/r/chess/comments/xr51fn/validating_chessbases_lets_check_figures_with_a/",
+      "owner": "Gianluca Beppe",
+      "rights": "Author's own analysis; public Reddit comment",
+      "redactionStatus": "none",
+      "rows": 64
+    },
+    {
+      "id": "reddit-reactions",
+      "source": "recovered_2022/reddit_archive/comments_pullpush.json",
+      "publicSource": "https://www.reddit.com/r/chess/comments/xr51fn/validating_chessbases_lets_check_figures_with_a/",
+      "owner": "Individual Reddit authors",
+      "rights": "Attributed archived comments from a public discussion, rendered as cropped captures",
+      "redactionStatus": "none",
+      "rows": 9
+    }
+  ]
+}

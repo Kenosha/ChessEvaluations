@@ -1,0 +1,95 @@
+game_index,event,date,round,white,black,result,ply,color,player,move,rank,best_move,chosen_expectation,best_expectation,legacy_code_match,depth_best,depth_played,depth_min,depth_max
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,0,white,"Colas, Joshua",c4,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,1,black,"Niemann, Hans Moke",c6,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,2,white,"Colas, Joshua",e4,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,3,black,"Niemann, Hans Moke",d5,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,4,white,"Colas, Joshua",exd5,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,5,black,"Niemann, Hans Moke",cxd5,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,6,white,"Colas, Joshua",d4,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,7,black,"Niemann, Hans Moke",Nf6,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,8,white,"Colas, Joshua",Nc3,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,9,black,"Niemann, Hans Moke",g6,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,10,white,"Colas, Joshua",cxd5,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,11,black,"Niemann, Hans Moke",Bg7,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,12,white,"Colas, Joshua",Bb5+,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,13,black,"Niemann, Hans Moke",Nbd7,B,,,,,,,,
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,14,white,"Colas, Joshua",Nge2,>10,Nf3,0.0,0.513,False,18,,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,15,black,"Niemann, Hans Moke",a6,1,a6,0.513,0.513,True,17,17,16,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,16,white,"Colas, Joshua",Bxd7+,3,Bd3,0.4705,0.497,False,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,17,black,"Niemann, Hans Moke",Qxd7,1,Qxd7,0.5665,0.5665,True,20,20,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,18,white,"Colas, Joshua",Qb3,2,O-O,0.475,0.475,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,19,black,"Niemann, Hans Moke",O-O,1,O-O,0.5355,0.5355,True,19,19,19,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,20,white,"Colas, Joshua",O-O,1,O-O,0.4785,0.4785,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,21,black,"Niemann, Hans Moke",Rd8,1,Rd8,0.533,0.533,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,22,white,"Colas, Joshua",Bg5,1,Bg5,0.4795,0.4795,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,23,black,"Niemann, Hans Moke",Qg4,>10,b5,0.0,0.5295,False,18,,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,24,white,"Colas, Joshua",Bf4,1,Bf4,0.549,0.549,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,25,black,"Niemann, Hans Moke",b5,1,b5,0.4805,0.4805,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,26,white,"Colas, Joshua",Be5,9,Bc7,0.4765,0.5275,False,18,17,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,27,black,"Niemann, Hans Moke",Bb7,1,Bb7,0.537,0.537,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,28,white,"Colas, Joshua",Bxf6,5,h3,0.431,0.49,False,19,18,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,29,black,"Niemann, Hans Moke",Bxf6,1,Bxf6,0.5975,0.5975,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,30,white,"Colas, Joshua",a4,1,a4,0.4645,0.4645,True,17,17,16,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,31,black,"Niemann, Hans Moke",Rab8,2,b4,0.5205,0.547,False,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,32,white,"Colas, Joshua",axb5,1,axb5,0.4685,0.4685,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,33,black,"Niemann, Hans Moke",axb5,1,axb5,0.5225,0.5225,True,20,20,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,34,white,"Colas, Joshua",h3,2,Ra5,0.4545,0.488,False,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,35,black,"Niemann, Hans Moke",Qg5,1,Qg5,0.6185,0.6185,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,36,white,"Colas, Joshua",f4,>10,Ra5,0.0,0.458,False,18,,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,37,black,"Niemann, Hans Moke",Qf5,1,Qf5,0.9745,0.9745,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,38,white,"Colas, Joshua",Qxb5,1,Qxb5,0.0605,0.0605,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,39,black,"Niemann, Hans Moke",Bxd5,1,Bxd5,0.9325,0.9325,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,40,white,"Colas, Joshua",Qa5,1,Qa5,0.112,0.112,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,41,black,"Niemann, Hans Moke",Bc4,>10,Rd6,0.0,0.822,False,17,,16,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,42,white,"Colas, Joshua",Qxf5,1,Qxf5,0.4055,0.4055,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,43,black,"Niemann, Hans Moke",gxf5,1,gxf5,0.646,0.646,True,16,16,15,16
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,44,white,"Colas, Joshua",Rfb1,2,Ra4,0.2375,0.327,False,17,17,17,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,45,black,"Niemann, Hans Moke",Bxe2,5,Rb4,0.569,0.673,False,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,46,white,"Colas, Joshua",Nxe2,1,Nxe2,0.4795,0.4795,True,18,18,18,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,47,black,"Niemann, Hans Moke",Bxd4+,1,Bxd4+,0.5355,0.5355,True,20,20,20,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,48,white,"Colas, Joshua",Nxd4,2,Kf1,0.474,0.4795,False,22,22,21,22
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,49,black,"Niemann, Hans Moke",Rxd4,1,Rxd4,0.562,0.562,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,50,white,"Colas, Joshua",Ra7,2,g3,0.4595,0.4825,False,20,20,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,51,black,"Niemann, Hans Moke",e6,2,Kf8,0.504,0.5105,False,22,22,21,22
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,52,white,"Colas, Joshua",Rc1,5,b4,0.0105,0.496,False,20,19,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,53,black,"Niemann, Hans Moke",Rxf4,1,Rxf4,0.977,0.977,True,22,22,21,22
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,54,white,"Colas, Joshua",Rcc7,1,Rcc7,0.021,0.021,True,21,21,20,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,55,black,"Niemann, Hans Moke",Rf8,1,Rf8,0.985,0.985,True,23,23,23,23
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,56,white,"Colas, Joshua",Rab7,4,b3,0.0015,0.0205,False,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,57,black,"Niemann, Hans Moke",h5,2,Kg7,0.999,0.9995,False,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,58,white,"Colas, Joshua",b4,1,b4,0.0005,0.0005,True,18,18,18,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,59,black,"Niemann, Hans Moke",h4,1,h4,1.0,1.0,True,21,21,20,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,60,white,"Colas, Joshua",Kh2,2,b5,0.0,0.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,61,black,"Niemann, Hans Moke",Rf1,1,Rf1,1.0,1.0,True,20,20,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,62,white,"Colas, Joshua",b5,1,b5,0.0,0.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,63,black,"Niemann, Hans Moke",Rd8,4,f4,0.9995,1.0,False,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,64,white,"Colas, Joshua",Rd7,1,Rd7,0.0,0.0,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,65,black,"Niemann, Hans Moke",Rxd7,1,Rxd7,1.0,1.0,True,19,19,19,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,66,white,"Colas, Joshua",Rxd7,1,Rxd7,0.0,0.0,True,29,29,29,29
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,67,black,"Niemann, Hans Moke",Rb1,1,Rb1,1.0,1.0,True,21,21,20,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,68,white,"Colas, Joshua",Rd4,2,Rd8+,0.0,0.0,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,69,black,"Niemann, Hans Moke",Rxb5,4,e5,0.9995,1.0,False,21,21,20,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,70,white,"Colas, Joshua",Rxh4,1,Rxh4,0.0005,0.0005,True,20,20,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,71,black,"Niemann, Hans Moke",Kg7,1,Kg7,1.0,1.0,True,21,21,20,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,72,white,"Colas, Joshua",Ra4,6,Rc4,0.0,0.0005,False,20,20,20,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,73,black,"Niemann, Hans Moke",e5,1,e5,1.0,1.0,True,21,21,20,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,74,white,"Colas, Joshua",Ra6,5,g3,0.0,0.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,75,black,"Niemann, Hans Moke",f6,2,f4,1.0,1.0,True,20,20,19,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,76,white,"Colas, Joshua",Kg3,6,h4,0.0,0.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,77,black,"Niemann, Hans Moke",Kg6,6,Rb7,1.0,1.0,True,19,18,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,78,white,"Colas, Joshua",Ra8,3,Kf2,0.0,0.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,79,black,"Niemann, Hans Moke",f4+,1,f4+,1.0,1.0,True,19,19,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,80,white,"Colas, Joshua",Kg4,4,Kf2,0.0,0.0,True,19,18,18,19
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,81,black,"Niemann, Hans Moke",Rb3,1,Rb3,1.0,1.0,True,20,20,20,20
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,82,white,"Colas, Joshua",Kh4,2,Rg8+,0.0,0.0,True,17,17,16,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,83,black,"Niemann, Hans Moke",Kf5,2,Rd3,1.0,1.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,84,white,"Colas, Joshua",Rg8,1,Rg8,0.0,0.0,True,17,17,16,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,85,black,"Niemann, Hans Moke",Rb7,2,Rd3,1.0,1.0,True,18,18,17,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,86,white,"Colas, Joshua",g4+,1,g4+,0.0,0.0,True,18,18,18,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,87,black,"Niemann, Hans Moke",Ke4,1,Ke4,1.0,1.0,True,18,18,18,18
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,88,white,"Colas, Joshua",Kh5,1,Kh5,0.0,0.0,True,21,21,21,21
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,89,black,"Niemann, Hans Moke",f3,1,f3,1.0,1.0,True,17,17,16,17
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,90,white,"Colas, Joshua",Rf8,1,Rf8,0.0,0.0,True,16,16,15,16
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,91,black,"Niemann, Hans Moke",Rb6,2,f2,1.0,1.0,True,16,16,15,16
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,92,white,"Colas, Joshua",g5,9,Ra8,0.0,0.0,True,14,13,13,14
+129,National Open 2021,2021.06.17,2.6,"Colas, Joshua","Niemann, Hans Moke",0-1,93,black,"Niemann, Hans Moke",f2,1,f2,1.0,1.0,True,18,18,17,18
