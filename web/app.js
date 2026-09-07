@@ -144,23 +144,30 @@ let autoplayStartTimer = null;
 let gameResumeTimer = null;
 let activeMethod = "letscheck";
 let activeDepth = 17;
+let chartTransitionFrame = null;
+const CHART_TOP = 52;
+const CHART_BOTTOM = 620;
+const CHART_EVENT_LABEL_Y = 672;
 const METHOD_ANNOTATIONS = {
   letscheck: {
-    eyebrow: "LET’S CHECK · POOLED ENGINES",
-    headline: "The viral outliers sit at the ceiling.",
-    copy: "GambitMan and Yosha presented the 97–100% games as suspicious. The red marks locate that original claim.",
+    eyebrow: "VIRAL OUTLIERS · LET’S CHECK",
+    headline: "Four games hit the roof.",
+    copy: "98–100% — the red flare that travelled.",
   },
   sf15: {
-    eyebrow: "STOCKFISH 15 · FIXED · SINGLE · REPRODUCIBLE",
-    headline: "The suspicious games cool sharply.",
-    copy: "My cleaner rerun uses one fixed engine across the same games. But Stockfish 15 postdates them; Niemann could not have used it then.",
+    eyebrow: "SAME FOUR GAMES · STOCKFISH 15",
+    headline: "The flare cools.",
+    copy: "One fixed engine pulls all four below 90%.",
   },
   sf7: {
-    eyebrow: "STOCKFISH 7 · PERIOD-AVAILABLE ENGINE",
-    headline: "A historically plausible engine cools them again.",
-    copy: "Stockfish 7 was available during the period. The same formerly ‘perfect’ games no longer cluster at 100%.",
+    eyebrow: "SAME FOUR GAMES · STOCKFISH 7",
+    headline: "The ceiling vanishes.",
+    copy: "A period engine redraws the signal.",
   },
 };
+const VIRAL_OUTLIER_IDS = games
+  .filter((game) => game.letscheck >= 98)
+  .map((game) => game.id);
 const prefersReducedMotion =
   window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
 if (prefersReducedMotion) activePly = MOMENTS.sinquefield[0].ply;
@@ -491,9 +498,7 @@ scrubber.addEventListener("input", (event) => {
 });
 
 function correlationY(value) {
-  const top = 36;
-  const bottom = 448;
-  return bottom - ((value - 20) / 80) * (bottom - top);
+  return CHART_BOTTOM - (value / 100) * (CHART_BOTTOM - CHART_TOP);
 }
 
 function buildChart() {
@@ -504,7 +509,7 @@ function buildChart() {
   const chartWidth = 1120 - left - right;
   const groupWidth = chartWidth / SOURCE_EVENTS.length;
 
-  [20, 40, 60, 80, 100].forEach((value) => {
+  [0, 20, 40, 60, 80, 100].forEach((value) => {
     const y = correlationY(value);
     const line = document.createElementNS(ns, "line");
     line.setAttribute("x1", String(left));
@@ -527,7 +532,7 @@ function buildChart() {
     const center = left + groupWidth * eventIndex + groupWidth / 2;
     const label = document.createElementNS(ns, "text");
     label.setAttribute("x", String(center));
-    label.setAttribute("y", "490");
+    label.setAttribute("y", String(CHART_EVENT_LABEL_Y));
     label.setAttribute("text-anchor", "middle");
     label.setAttribute("class", "event-label");
     label.textContent = event.short;
@@ -564,6 +569,7 @@ function buildChart() {
       point.dataset.method = method;
       point.dataset.x = String(x);
       attachTooltip(point, game, method);
+      attachLinkedHighlight(point, game.id);
       svg.appendChild(point);
     });
 
@@ -578,28 +584,184 @@ function buildChart() {
     );
     activePoint.dataset.game = game.id;
     activePoint.dataset.x = String(x);
+    activePoint.setAttribute("tabindex", "0");
     attachTooltip(activePoint, game, "active");
+    attachLinkedHighlight(activePoint, game.id);
     svg.appendChild(activePoint);
   });
 
+  buildChartCallout(svg, ns);
   renderLegend();
+}
+
+function buildChartCallout(svg, ns) {
+  const links = document.createElementNS(ns, "g");
+  links.setAttribute("class", "annotation-links");
+  VIRAL_OUTLIER_IDS.forEach((gameId, index) => {
+    const path = document.createElementNS(ns, "path");
+    path.dataset.game = gameId;
+    path.dataset.anchorX = String(782 + index * 84);
+    path.setAttribute("class", "annotation-link");
+    links.appendChild(path);
+  });
+  const firstPoint = svg.querySelector(".game-point");
+  svg.insertBefore(links, firstPoint);
+
+  const annotation = document.createElementNS(ns, "g");
+  annotation.setAttribute("class", "method-annotation");
+  annotation.setAttribute("id", "method-annotation");
+  annotation.setAttribute("role", "note");
+  annotation.setAttribute("aria-live", "polite");
+
+  const bubble = document.createElementNS(ns, "rect");
+  bubble.setAttribute("class", "annotation-bubble");
+  bubble.setAttribute("x", "744");
+  bubble.setAttribute("y", "502");
+  bubble.setAttribute("width", "350");
+  bubble.setAttribute("height", "94");
+  bubble.setAttribute("rx", "3");
+  annotation.appendChild(bubble);
+
+  const eyebrow = document.createElementNS(ns, "text");
+  eyebrow.setAttribute("class", "method-eyebrow");
+  eyebrow.setAttribute("id", "method-eyebrow");
+  eyebrow.setAttribute("x", "762");
+  eyebrow.setAttribute("y", "528");
+  eyebrow.textContent = METHOD_ANNOTATIONS.letscheck.eyebrow;
+  annotation.appendChild(eyebrow);
+
+  const headline = document.createElementNS(ns, "text");
+  headline.setAttribute("class", "method-headline");
+  headline.setAttribute("id", "method-headline");
+  headline.setAttribute("x", "762");
+  headline.setAttribute("y", "556");
+  headline.textContent = METHOD_ANNOTATIONS.letscheck.headline;
+  annotation.appendChild(headline);
+
+  const copy = document.createElementNS(ns, "text");
+  copy.setAttribute("class", "method-copy");
+  copy.setAttribute("id", "method-copy");
+  copy.setAttribute("x", "762");
+  copy.setAttribute("y", "580");
+  copy.textContent = METHOD_ANNOTATIONS.letscheck.copy;
+  annotation.appendChild(copy);
+  svg.appendChild(annotation);
+
+  updateChartCalloutLinks();
+}
+
+function updateChartCalloutLinks() {
+  document.querySelectorAll(".annotation-link").forEach((path) => {
+    const point = document.querySelector(
+      `.active-point[data-game="${path.dataset.game}"]`,
+    );
+    if (!point) return;
+    const startX = Number(path.dataset.anchorX);
+    const startY = 502;
+    const endX = Number(point.dataset.x);
+    const endY = Number(point.getAttribute("cy"));
+    const controlX = startX + (endX - startX) * 0.55;
+    const controlY = Math.min(startY, endY) - 26;
+    path.setAttribute(
+      "d",
+      `M ${startX} ${startY} Q ${controlX} ${controlY} ${endX} ${endY}`,
+    );
+  });
+}
+
+function animateChartToMethod(method) {
+  if (chartTransitionFrame !== null) {
+    window.cancelAnimationFrame(chartTransitionFrame);
+    chartTransitionFrame = null;
+  }
+
+  const transitions = [...document.querySelectorAll(".active-point")].map(
+    (point) => {
+      const game = games.find((item) => item.id === point.dataset.game);
+      point.setAttribute("fill", heatColor(game[method]));
+      point.setAttribute(
+        "aria-label",
+        `${game.eventName}, round ${game.round}. ${METHOD_META[method].name}: ${game[method]}%.`,
+      );
+      return {
+        point,
+        startY: Number(point.getAttribute("cy")),
+        endY: correlationY(game[method]),
+      };
+    },
+  );
+
+  if (prefersReducedMotion) {
+    transitions.forEach(({ point, endY }) =>
+      point.setAttribute("cy", String(endY)),
+    );
+    updateChartCalloutLinks();
+    return;
+  }
+
+  const startedAt = performance.now();
+  const duration = 920;
+  const step = (now) => {
+    const progress = Math.min((now - startedAt) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 4);
+    transitions.forEach(({ point, startY, endY }) => {
+      point.setAttribute("cy", String(startY + (endY - startY) * eased));
+    });
+    updateChartCalloutLinks();
+    if (progress < 1) {
+      chartTransitionFrame = window.requestAnimationFrame(step);
+    } else {
+      chartTransitionFrame = null;
+    }
+  };
+  chartTransitionFrame = window.requestAnimationFrame(step);
+}
+
+function setLinkedHighlight(gameId, highlighted) {
+  document
+    .querySelectorAll(`.active-point[data-game="${gameId}"]`)
+    .forEach((point) =>
+      point.classList.toggle("is-linked-highlight", highlighted),
+    );
+  document
+    .querySelectorAll(`.heatmap-cell[data-game="${gameId}"]`)
+    .forEach((cell) =>
+      cell.classList.toggle("is-linked-highlight", highlighted),
+    );
+}
+
+function attachLinkedHighlight(element, gameId) {
+  element.addEventListener("mouseenter", () =>
+    setLinkedHighlight(gameId, true),
+  );
+  element.addEventListener("mouseleave", () =>
+    setLinkedHighlight(gameId, false),
+  );
+  element.addEventListener("focus", () => setLinkedHighlight(gameId, true));
+  element.addEventListener("blur", () => setLinkedHighlight(gameId, false));
 }
 
 function attachTooltip(element, game, method) {
   const tooltip = document.querySelector("#chart-tooltip");
-  element.addEventListener("mouseenter", () => {
+  const showTooltip = () => {
     const selectedMethod = method === "active" ? activeMethod : method;
     tooltip.innerHTML = `<strong>${game.eventName} · Round ${game.round}</strong><span>${METHOD_META[selectedMethod].name}: ${game[selectedMethod]}%</span>`;
+    element.setAttribute(
+      "aria-label",
+      `${game.eventName}, round ${game.round}. ${METHOD_META[selectedMethod].name}: ${game[selectedMethod]}%.`,
+    );
     const chartShell = document.querySelector(".chart-shell");
     const shellRect = chartShell.getBoundingClientRect();
     const pointRect = element.getBoundingClientRect();
     tooltip.style.left = `${pointRect.left - shellRect.left + pointRect.width / 2}px`;
     tooltip.style.top = `${pointRect.top - shellRect.top}px`;
     tooltip.classList.add("is-visible");
-  });
-  element.addEventListener("mouseleave", () =>
-    tooltip.classList.remove("is-visible"),
-  );
+  };
+  const hideTooltip = () => tooltip.classList.remove("is-visible");
+  element.addEventListener("mouseenter", showTooltip);
+  element.addEventListener("mouseleave", hideTooltip);
+  element.addEventListener("focus", showTooltip);
+  element.addEventListener("blur", hideTooltip);
 }
 
 function renderLegend() {
@@ -668,6 +830,8 @@ function buildHeatmap() {
       if (game) {
         cell.dataset.event = event.name;
         cell.dataset.round = String(round);
+        cell.tabIndex = 0;
+        attachLinkedHighlight(cell, game.id);
       }
       row.appendChild(cell);
     }
@@ -687,6 +851,7 @@ function updateHeatmap(method) {
         game.letscheck >= 95 ? "rgba(239, 102, 93, 0.5)" : "rgba(229, 223, 207, 0.12)";
       cell.textContent = `${value}%`;
       cell.title = `${cell.dataset.event}, round ${cell.dataset.round}: ${value}%`;
+      cell.setAttribute("aria-label", cell.title);
     },
   );
 }
@@ -719,12 +884,7 @@ function updateMethod(method) {
   document.querySelector(".measure-page").dataset.method = method;
   updateMethodAnnotation(method);
 
-  document.querySelectorAll(".active-point").forEach((point, index) => {
-    const game = games.find((item) => item.id === point.dataset.game);
-    point.style.transitionDelay = `${Math.min(index * 13, 420)}ms`;
-    point.setAttribute("cy", String(correlationY(game[method])));
-    point.setAttribute("fill", heatColor(game[method]));
-  });
+  animateChartToMethod(method);
 
   document.querySelectorAll(".ghost-point").forEach((point) => {
     point.classList.toggle("is-active", point.dataset.method === method);

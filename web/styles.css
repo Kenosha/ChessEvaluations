@@ -773,7 +773,7 @@ input:focus-visible {
 .method-console {
   display: grid;
   grid-template-columns: minmax(0, 1.75fr) minmax(294px, 0.82fr);
-  grid-template-rows: 82px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   gap: 0 14px;
   width: 100%;
   height: 100%;
@@ -884,19 +884,10 @@ input:focus-visible {
 }
 
 .method-annotation {
-  grid-column: 1 / -1;
-  align-self: center;
-  max-width: 720px;
-  margin: 9px 0 6px 4px;
-  padding: 7px 13px 8px;
-  border-left: 3px solid var(--red);
-  background: linear-gradient(to right, rgba(239, 102, 93, 0.08), transparent 75%);
-  font-family: var(--mono);
+  pointer-events: none;
   transition:
     opacity 240ms ease,
-    transform 420ms cubic-bezier(0.2, 0.75, 0.25, 1),
-    border-color 600ms ease,
-    background 600ms ease;
+    transform 420ms cubic-bezier(0.2, 0.75, 0.25, 1);
 }
 
 .method-annotation.is-changing {
@@ -904,39 +895,47 @@ input:focus-visible {
   transform: translateY(3px);
 }
 
-.method-annotation[data-method="sf15"] {
-  border-left-color: var(--amber);
-  background: linear-gradient(to right, rgba(242, 184, 75, 0.07), transparent 75%);
+.annotation-bubble {
+  fill: rgba(23, 18, 17, 0.95);
+  stroke: rgba(239, 102, 93, 0.78);
+  stroke-width: 1.5;
+  transition:
+    fill 600ms ease,
+    stroke 600ms ease;
 }
 
-.method-annotation[data-method="sf7"] {
-  border-left-color: var(--cyan);
-  background: linear-gradient(to right, rgba(103, 213, 208, 0.07), transparent 75%);
+.method-annotation[data-method="sf15"] .annotation-bubble {
+  fill: rgba(24, 21, 15, 0.95);
+  stroke: rgba(242, 184, 75, 0.78);
 }
 
-.method-annotation span,
-.method-annotation strong,
-.method-annotation p {
-  display: block;
+.method-annotation[data-method="sf7"] .annotation-bubble {
+  fill: rgba(14, 23, 22, 0.95);
+  stroke: rgba(103, 213, 208, 0.78);
 }
 
-.method-annotation span {
-  color: var(--amber);
-  font-size: 0.46rem;
+.method-eyebrow,
+.method-headline,
+.method-copy {
+  font-family: var(--mono);
+}
+
+.method-eyebrow {
+  fill: var(--amber);
+  font-size: 12px;
   letter-spacing: 0.11em;
 }
 
-.method-annotation strong {
-  margin-top: 4px;
-  color: var(--paper);
-  font-size: clamp(0.74rem, 1.05vw, 0.94rem);
+.method-headline {
+  fill: var(--paper);
+  font-size: 19px;
+  font-weight: 700;
 }
 
-.method-annotation p {
-  margin: 4px 0 0;
-  color: #a5afaa;
-  font-size: clamp(0.51rem, 0.65vw, 0.59rem);
-  line-height: 1.42;
+.method-copy {
+  fill: #a5afaa;
+  font-size: 12px;
+  letter-spacing: 0.02em;
 }
 
 .chart-shell {
@@ -988,9 +987,10 @@ input:focus-visible {
 }
 
 .grid-line {
-  stroke: #28322f;
-  stroke-width: 1;
-  shape-rendering: crispEdges;
+  opacity: 1;
+  stroke: #4b5a56;
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
 }
 
 .grid-label,
@@ -1011,18 +1011,23 @@ input:focus-visible {
 }
 
 .game-point {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
   transition:
-    cy 920ms cubic-bezier(0.18, 0.72, 0.18, 1),
     fill 760ms ease,
-    opacity 580ms ease;
+    opacity 580ms ease,
+    transform 140ms ease;
 }
 
 .ghost-point.is-inactive {
   opacity: 0.11;
+  pointer-events: none;
 }
 
 .ghost-point.is-active {
   opacity: 0.38;
+  pointer-events: none;
 }
 
 .active-point {
@@ -1032,6 +1037,32 @@ input:focus-visible {
 .active-point.was-flagged {
   stroke: rgba(239, 102, 93, 0.62);
   stroke-width: 2;
+}
+
+.game-point.is-linked-highlight {
+  opacity: 1 !important;
+  stroke: #fff8e9;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 7px rgba(255, 248, 233, 0.9));
+  transform: scale(1.75);
+}
+
+.annotation-link {
+  fill: none;
+  opacity: 0.7;
+  pointer-events: none;
+  stroke: var(--red);
+  stroke-dasharray: 4 5;
+  stroke-width: 1.6;
+  transition: stroke 600ms ease;
+}
+
+.measure-page[data-method="sf15"] .annotation-link {
+  stroke: var(--amber);
+}
+
+.measure-page[data-method="sf7"] .annotation-link {
+  stroke: var(--cyan);
 }
 
 .chart-tooltip {
@@ -1136,10 +1167,21 @@ input:focus-visible {
   font-size: clamp(0.4rem, 0.64vw, 0.58rem);
   font-weight: 700;
   text-align: center;
+  cursor: pointer;
   transition:
     color 780ms ease,
     background-color 980ms cubic-bezier(0.18, 0.72, 0.18, 1),
-    border-color 780ms ease;
+    border-color 780ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.heatmap-cell.is-linked-highlight {
+  z-index: 2;
+  outline: 2px solid #fff8e9;
+  outline-offset: 1px;
+  box-shadow: 0 0 12px rgba(255, 248, 233, 0.5);
+  transform: scale(1.1);
 }
 
 .heatmap-cell.is-empty {
@@ -1469,7 +1511,7 @@ input:focus-visible {
 
 .rank-table {
   display: grid;
-  grid-template-rows: 42px repeat(4, minmax(60px, 1fr));
+  grid-template-rows: 42px repeat(4, minmax(48px, 1fr));
   min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line-strong);
@@ -1491,18 +1533,56 @@ input:focus-visible {
   letter-spacing: 0.09em;
 }
 
-.rank-header span {
+.rank-header > span {
   display: grid;
   place-items: center;
 }
 
-.rank-header span + span {
+.rank-header > span + span {
   border-left: 1px solid var(--line);
 }
 
-.rank-header span:nth-child(2) {
+.rank-header > span:nth-child(2) {
   color: var(--cyan);
   background: #14211f;
+}
+
+.rank-header .rank-corner {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - 0.75px),
+      var(--line-strong) 50%,
+      transparent calc(50% + 0.75px)
+    ),
+    #0b0f0e;
+}
+
+.rank-axis {
+  position: absolute;
+  color: var(--muted);
+  max-width: calc(50% - 7px);
+  overflow: hidden;
+  font-size: 0.52rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.rank-axis-move {
+  bottom: 6px;
+  left: 9px;
+}
+
+.rank-axis-eval {
+  top: 4px;
+  right: 8px;
+  color: var(--cyan);
+  text-align: right;
+  white-space: normal;
 }
 
 .rank-row {
@@ -1834,7 +1914,7 @@ input:focus-visible {
   }
 
   .rank-table {
-    grid-template-rows: 40px repeat(4, minmax(55px, 1fr));
+    grid-template-rows: 40px repeat(4, minmax(46px, 1fr));
   }
 }
 
@@ -1872,7 +1952,7 @@ input:focus-visible {
 
   .method-console {
     grid-template-columns: 1fr;
-    grid-template-rows: 76px minmax(0, 1fr) 215px;
+    grid-template-rows: minmax(0, 1fr) 215px;
     gap: 0;
   }
 
@@ -1886,7 +1966,7 @@ input:focus-visible {
   }
 
   .heatmap-shell {
-    grid-row: 3;
+    grid-row: 2;
     padding: 7px 0 0;
     border-top: 1px solid var(--line);
     border-left: 0;
@@ -2031,7 +2111,7 @@ input:focus-visible {
   }
 
   .method-console {
-    grid-template-rows: 92px minmax(0, 1fr) 220px;
+    grid-template-rows: minmax(0, 1fr) 220px;
     padding: 0 7px 7px;
   }
 
@@ -2044,15 +2124,6 @@ input:focus-visible {
   .method-control .deck-label,
   .method-control .hardware-mark {
     display: none;
-  }
-
-  .method-annotation {
-    margin: 5px 0 4px;
-    padding: 6px 8px;
-  }
-
-  .method-annotation p {
-    font-size: 0.48rem;
   }
 
   .chart-label,
@@ -2174,7 +2245,7 @@ input:focus-visible {
   }
 
   .rank-table {
-    grid-template-rows: 44px repeat(4, minmax(60px, 1fr));
+    grid-template-rows: 44px repeat(4, minmax(44px, 1fr));
   }
 
   .rank-header,
@@ -2184,6 +2255,22 @@ input:focus-visible {
 
   .rank-header {
     font-size: 0.48rem;
+  }
+
+  .rank-axis {
+    max-width: calc(50% - 2px);
+    font-size: 0.4rem;
+    letter-spacing: 0;
+  }
+
+  .rank-axis-move {
+    bottom: 5px;
+    left: 4px;
+  }
+
+  .rank-axis-eval {
+    top: 3px;
+    right: 2px;
   }
 
   .position-label {
